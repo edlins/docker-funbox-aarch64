@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM arm64v8/ubuntu
 
 MAINTAINER Werner Beroux <werner@beroux.com>
 
@@ -8,6 +8,9 @@ MAINTAINER Werner Beroux <werner@beroux.com>
 # - curl, watch, imagemagick, vlc and youtube-dl are just useful for so many of those commands.
 
 RUN apt-get update \
+    && apt-get install -y gpg \
+    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC \
+    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138 \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         aview \
         bb \
