@@ -1,4 +1,4 @@
-FROM arm64v8/ubuntu
+FROM arm64v8/ubuntu:focal
 
 MAINTAINER Werner Beroux <werner@beroux.com>
 
@@ -8,7 +8,7 @@ MAINTAINER Werner Beroux <werner@beroux.com>
 # - curl, watch, imagemagick, vlc and youtube-dl are just useful for so many of those commands.
 
 RUN apt-get update \
-    && apt-get install -y gpg \
+    && apt-get install -y gnupg \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138 \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -43,7 +43,7 @@ RUN apt-get update \
         lolcat \
         youtube-dl \
 
-    && echo "Install asciiquarium" \
+    ; echo "Install asciiquarium" \
     && cpan -i Term::Animation \
     && curl -L http://www.robobunny.com/projects/asciiquarium/asciiquarium.tar.gz -o asciiquarium.tar.gz \
     && tar -zxvf asciiquarium.tar.gz asciiquarium_1.1/asciiquarium \
@@ -52,11 +52,11 @@ RUN apt-get update \
     && rm -rf asciiquarium_1.1 asciiquarium.tar.gz \
 
     && echo "Install Falling Hearts" \
-    && curl -L https://yjl.googlecode.com/hg/Bash/falling-%3C3s.sh -o /usr/local/bin/falling-hearts \
+    && curl -L https://raw.githubusercontent.com/lbarchive/yjl/master/Bash/falling-%3C3s.sh -o /usr/local/bin/falling-hearts \
     && chmod +x /usr/local/bin/falling-hearts \
 
     && echo "Install pipes" \
-    && curl -L https://gist.githubusercontent.com/livibetter/4689307/raw/949e43fe2962c2c97c8b1d974ff93dd053d9bd37/pipes.sh -o /usr/local/bin/pipes \
+    && curl -L https://raw.githubusercontent.com/pipeseroni/pipes.sh/master/pipes.sh -o /usr/local/bin/pipes \
     && chmod +x /usr/local/bin/pipes \
 
     && echo "Clean-up" \

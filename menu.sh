@@ -49,7 +49,7 @@ case $choice in
   '8') exec xaos -autopilot;;
   '9') exec bb;;
   '10') exec sl;;
-  '11') exec youtube 'https://www.youtube.com/watch?v=_7vkRTylYoA';;
+  '11') exec youtube 'https://www.youtube.com/watch?v=8I0SJ9HuB5k';;
   '12') exec cowsay 'wernight/funbox';;
   '13') exec figlet 'wernight/funbox';;
   '14') exec toilet 'wernight/funbox';;
